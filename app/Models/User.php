@@ -28,25 +28,15 @@ class User extends Authenticatable
         'artist',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'birth' => 'date', // Cast 'birth' as a date
-        'artist' => 'boolean', // Cast 'artist' as a boolean
+        'birth' => 'date', 
+        'artist' => 'boolean', 
     ];
     public function posts()
     {
@@ -122,5 +112,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post_Favorites::class);
     }
-    
+    public function isAdmin()
+    {
+        return $this->is_admin === 1; 
+    }
 }

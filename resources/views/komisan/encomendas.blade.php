@@ -276,6 +276,11 @@
                 <li><a href="{{ route('user.home') }}">Artistas</a></li>
                 <li><a href="{{ route('post.create') }}">Postar</a></li>
                 <li><a href="{{ route('request.show') }}">Encomendas</a></li>
+                @if (auth()->user()->email === 'Komisan@gmail.com')
+                    <li><a href="{{ route('show.report.user') }}">report user</a></li>
+                    <li><a href="{{ route('show.report.post') }}">report post</a></li>
+                    <li><a href="{{ route('show.report.tag') }}">report tag</a></li>
+                @endif
                 <li><a href="{{ route('user.logout') }}">Sair</a></li>
             @endauth
                 </ul>

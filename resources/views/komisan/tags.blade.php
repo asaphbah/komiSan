@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Komisan</title>
+    <title>Feed de Posts</title>
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    @livewireStyles
 </head>
+<style>
+    .tag-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tag-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.tag-container p {
+    font-size: 16px;
+    color: #555;
+}
+</style>
 <body>
     <header>
         <button id="btnBurger" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">
@@ -39,40 +59,20 @@
             </menu>
         </nav>
     </header>
-    <div class="container">
-        <div class="portfolio-container">
-            <!-- Card 1 -->
-                   <!-- Card 1 -->
-                   @foreach($users as $artista)
-                        <div class="portfolio-card">
-                            <a href="{{ route('profile.komisan', ['username' => $artista->username]) }}" ><img src="{{ asset('storage/' . $artista->img_user) }}" alt="Imagem do Usuário"></a>
-                            <h2>{{$artista->name}}</h2>
-                            @foreach($artista->artistTags as $tag)
-                                <span class="art-style">{{$tag->tag}}</span>
-                            @endforeach
-
-                            @php
-                                $averageRating = optional($artista->averageRating())->average_rating;
-                            @endphp
-
-                            <h1>{{ empty(round($artista->averageRating())) ? '' : round($artista->averageRating()) }}</h1>
-
-                            <div class="stars">
-                                <!-- Star icons using Font Awesome -->
-                                @for($i = 1; $i <= 5; $i++)
-                                @if ($i <= $artista->averageRating())
-                                    <i class="fas fa-star"></i>
-                                @else
-                                    <i class="far fa-star"></i>
-                                @endif
-                            @endfor
-                        </div>
-                        </div>
-                    @endforeach
-                  </div>
-              
+    <div class="tag-container">
+        <h2>Tag em destaque: {{$tag->tag}}</h2>
+        <p>Número de posts associados a esta tag: {{$tag->posts->count()}}</p>
+        <div class="icon-button">
+            <div class="dropdown">
+                <button class="icon-button"><i class="fas fa-ellipsis-h"></i></button>
+                <div class="dropdown-content">
+                    <a href="{{ route('report.tag.create', ['tag_id' => $tag->id]) }}">Reportar tag</a>
+                </div>
+            </div>
         </div>
     </div>
-            <script src={{ asset('js/script.js') }}></script>
+    <livewire:tags-posts :tag="$tag->tag" >
+    @livewireScripts
+    <script src={{ asset('js/script.js') }}></script>
 </body>
 </html>

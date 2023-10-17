@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,14 +25,19 @@ class Controller extends BaseController
             'password' => $request->input('password'),
         ];
         if (Auth::attempt($credentials)) {
-            return redirect()->route('profile.komisan', ['username' => $request->input('username')]);
+            $user = Auth::user();
+            if ($user->username == 'Komisan') {
+                return redirect()->route('profile.komisan', ['username' => $request->input('username')]);
+            }else{
+                return redirect()->route('profile.komisan', ['username' => $request->input('username')]);
+            }
         }
 
         return redirect()->route('user.login')->withErrors(['login_error' => 'username ou senha invalida']);
     }
     public function logout(){
         Auth::logout();
-        return redirect('/');
+        return redirect()->route('user.login');
     }
 
 

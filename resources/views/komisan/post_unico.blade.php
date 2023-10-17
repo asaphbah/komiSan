@@ -28,6 +28,11 @@
                 <li><a href="{{ route('user.home') }}">Artistas</a></li>
                 <li><a href="{{ route('post.create') }}">Postar</a></li>
                 <li><a href="{{ route('request.show') }}">Encomendas</a></li>
+                @if (auth()->user()->email === 'Komisan@gmail.com')
+                    <li><a href="{{ route('show.report.user') }}">report user</a></li>
+                    <li><a href="{{ route('show.report.post') }}">report post</a></li>
+                    <li><a href="{{ route('show.report.tag') }}">report tag</a></li>
+                @endif
                 <li><a href="{{ route('user.logout') }}">Sair</a></li>
             @endauth
                 </ul>
@@ -53,10 +58,12 @@
                     <a href="{{ route('profile.komisan', ['username' => $post->user->username]) }}" class="user-photo"><img src="{{ asset('storage/' . $post->user->img_user) }}" alt="Foto do Usuário"></a>
                     <div class="user-name">{{$post->user->username}}</div>
                     @auth
-                        @if ($post->user->followerAuth->count())
-                        <a href="{{ route('user.unfollow', ['follower_id' => auth()->user()->id, 'following_id' => $post->user->id]) }}" class="follow-button followed">Deseguir</a>
-                        @else
-                        <a href="{{ route('user.follow', ['user_id' => $post->user->id, 'follower_id' => auth()->user()->id]) }}" class="follow-button">Seguir</a>
+                        @if ($post->user->id != auth()->user()->id)
+                            @if ($post->user->followerAuth->count())
+                            <a href="{{ route('user.unfollow', ['follower_id' => auth()->user()->id, 'following_id' => $post->user->id]) }}" class="follow-button followed">Deseguir</a>
+                            @else
+                            <a href="{{ route('user.follow', ['user_id' => $post->user->id, 'follower_id' => auth()->user()->id]) }}" class="follow-button">Seguir</a>
+                            @endif
                         @endif
                     @endauth
                     
@@ -66,7 +73,7 @@
                    <livewire:post-unico-like :post_id="$post->id" >
                 <div>
                    @foreach ($post->tags as $tag)
-                    <span class="art-style">{{$tag->tag}}</span>
+                    <a href="{{route('tag.show', ['tagShow'=>$tag->tag])}}"  class="art-style">{{$tag->tag}}</a>
                    @endforeach
                 </div>
 

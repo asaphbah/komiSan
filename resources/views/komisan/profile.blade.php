@@ -29,6 +29,11 @@
                 <li><a href="{{ route('user.home') }}">Artistas</a></li>
                 <li><a href="{{ route('post.create') }}">Postar</a></li>
                 <li><a href="{{ route('request.show') }}">Encomendas</a></li>
+                @if (auth()->user()->email === 'Komisan@gmail.com')
+                    <li><a href="{{ route('show.report.user') }}">report user</a></li>
+                    <li><a href="{{ route('show.report.post') }}">report post</a></li>
+                    <li><a href="{{ route('show.report.tag') }}">report tag</a></li>
+                @endif
                 <li><a href="{{ route('user.logout') }}">Sair</a></li>
             @endauth
                 </ul>
@@ -48,22 +53,22 @@
                 </ul>
             </div>
             <div class="profile-cta">
-                @if (auth()->user()->id != $user->id)
+                @auth
+                    @if (auth()->user()->id != $user->id)
                         @if ($user->followerAuth->count())
                             <a href="{{ route('user.unfollow', ['follower_id' => auth()->user()->id, 'following_id' => $user->id]) }}" class="follow-button followed">Deseguir</a>
                         @else
                             <a href="{{ route('user.follow', ['user_id' => $user->id, 'follower_id' => auth()->user()->id]) }}" class="follow-button">Seguir</a>
                         @endif
-                @endif
-                
-              
+                    @endif
+                @endauth
                 <div class="dropdown">
                     <button class="config-button-container">
                         <i class="fas fa-cogs"></i>
                     </button>
                     <div class="dropdown-content">
                         <a href="#">Editar perfil</a>
-                        <a href="#">Suporte</a>
+                        <a href="{{route('report.user.create', ['user_id'=>$user->id])}}">Reportar usuario</a>
                         <a href="#">Alterar senha</a>
                     </div>
                 </div>

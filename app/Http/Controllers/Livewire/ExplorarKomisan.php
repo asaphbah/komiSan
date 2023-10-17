@@ -28,8 +28,7 @@ class ExplorarKomisan extends Component
 
     $posts_relacionados = Post::whereHas('tags', function ($query) use ($tagIds) {
             $query->whereIn('tags.id', $tagIds);
-        })->take(5)
-        ->get();
+        })->get();
 
     $this->posts = $posts_relacionados; // Corrigindo a atribuição para $this->posts
 }

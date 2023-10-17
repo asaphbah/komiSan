@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserCreateUpdateRequest;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\Follower;
 use App\Models\Tag;
 use App\Models\tag_user;
@@ -19,7 +20,7 @@ class UserController extends Controller
         return view('komisan.forms.cadastroUser-one');
     }
     //efetuar o store do cadastro
-    public function store_one(UserCreateUpdateRequest $request){
+    public function store_one(UserCreateRequest $request){
         $validatedData = $request->validated(); // Obtém os dados validados da request
 
     // Criptografa a senha antes de salvar no banco de dados
@@ -68,7 +69,7 @@ class UserController extends Controller
        $user = User::find($id);
        return view('komisan.forms.cadastroUser-three', compact('user'));
     }
-    public function store_three(Request $request){
+    public function store_three(UserUpdateRequest $request){
         $user = User::find($request->input('user_id'));
         $artist = $request->has('artist') ? true : false;
 

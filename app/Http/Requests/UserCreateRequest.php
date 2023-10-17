@@ -20,10 +20,6 @@ class UserCreateRequest extends FormRequest
             'password' => 'required|string|min:8',
             'birth' => 'required|date|before_or_equal:' . now()->subYears(18)->format('Y-m-d'),
             'username' => 'required|string|max:255|unique:users',
-            'img_cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
-            'img_user' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'bio' => 'nullable|string|max:255',
-            'artist' => 'boolean', 
         ];
     }
 }

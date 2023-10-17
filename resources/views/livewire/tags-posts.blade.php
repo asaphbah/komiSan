@@ -1,18 +1,11 @@
 <div>
-    @auth
-        <ul class="menu">
-            <li class="menu-item" wire:click="postsForYou">For you</li>
-            <li class="menu-item" wire:click="postsViral">Virais</li>
-            <li class="menu-item"wire:click="postsFollowers">Seguindo</li>
-        </ul>    
-    @endauth
     <section class="feed">
         @foreach ($posts as $post)
 
         <article class="post">
             <div class="post-header">
-                <div class="user-photo"><img src="{{ asset('storage/' . $post->user->img_user) }}" alt="Foto do Usuário"></div>
-                <div class="user-name">{{$post->user->username}}</div>
+                <a href="{{route('profile.komisan',['username' => $post->user->username ])}}" class="user-photo"><img src="{{ asset('storage/' . $post->user->img_user) }}" alt="Foto do Usuário"></a>
+                <a href="{{route('profile.komisan',['username' => $post->user->username ])}}" class="user-name">{{$post->user->username}}</a>
                 <div class="icon-button">
                     <div class="dropdown">
                         <button class="icon-button"><i class="fas fa-ellipsis-h"></i></button>
