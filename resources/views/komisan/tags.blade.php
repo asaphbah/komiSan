@@ -60,7 +60,7 @@
         </nav>
     </header>
     <div class="tag-container">
-        <h2>Tag em destaque: {{$tag->tag}}</h2>
+        <h2>Tag em destaque: #{{$tag->tag}}</h2>
         <p>Número de posts associados a esta tag: {{$tag->posts->count()}}</p>
         <div class="icon-button">
             <div class="dropdown">

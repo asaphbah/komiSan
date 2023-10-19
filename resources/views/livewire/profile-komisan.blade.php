@@ -32,7 +32,7 @@
                             <button class="like-button" wire:click="like({{ $post->id }})"><i class="fas fa-heart"></i></button>
                         @endif
                     @endauth
-                    <span class="likes-count">likes:{{$post->likeCount->count()}}</span>
+                    <span class="likes-count">likes:{{$post->likes->count()}}</span>
                 </div>
             </article>
              

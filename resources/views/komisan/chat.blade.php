@@ -112,7 +112,8 @@
     align-items: center;
     position: fixed;
     bottom: 0;
-    width: calc(100% - 40px); /* Considerando o padding de 20px em .container */
+    left: 0;
+    width: 100vw; /* Considerando o padding de 20px em .container */
     background-color: white;
     padding: 10px;
     box-sizing: border-box;

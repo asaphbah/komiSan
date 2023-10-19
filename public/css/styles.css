@@ -516,42 +516,60 @@ menu > ul > li > a:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
 }
 
-.container-login .h1-cadastro {
-    margin: 0 1.5rem;
-}
-
-.container-login .h1-cadastro::after {
-    margin-bottom: 10px;
-}
-
-.login-icon {
-    margin: auto;
-    width: 200px;
-    height: 200px;
-    border-radius: 100%;
+.mascot-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 36px; 
-    color: #fff; 
 }
 
-.login-icon img{
-    width: 120%;
-    transition: 1s;
+.mascot-box {
+    position: relative;
+    width: 280px;
+    height: 280px;
 }
 
-.login-icon img:hover { 
-    transform: rotate(360deg); 
-    transition: transform 1s; 
+.mascot-box::before {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 280px;
+    height: 280px;
+    background: transparent;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 100px 0 40px #fbfbfb;
 }
 
-.login-icon img:active {
-    transform: scale(1.2);
-    transition: transform 2s; 
+.mascot-circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 280px;
+    height: 280px;
+    background-color: #eaeaea;
+    overflow: hidden;
+    border-radius: 50%;
 }
 
-.toggle-password {
+.mascot-circle img, .mascot-box img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 290px;
+}
+
+.h1-login {
+    align-self: flex-start;
+    margin: 0 .8rem;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1rem;
+}
+
+.toggle-password, .anchor-donthavean-acount {
     cursor: pointer;
     margin-top: 10px;
     color: #43abae; 
@@ -559,13 +577,19 @@ menu > ul > li > a:hover {
     display: inline-block; 
 }
 
-.toggle-password:hover {
+.toggle-password:hover, .anchor-donthavean-acount:hover{
     color: #1e7b7f;
+}
+
+.toggle-password {
+    align-self: flex-end;
+    margin-right: 20px;
+    margin-bottom: 15px;
 }
 
 .input-group-login {
     width: 100%;
-    justify-content: center;
+    text-align: center;
     display: flex;
     flex-direction: column;
 }
@@ -574,20 +598,24 @@ menu > ul > li > a:hover {
     position: relative;
     margin: 0 auto;
     width: 100%;
+    z-index: 2;
 }
 
 .input-box-login input {
     padding: .9rem 1.1rem;
     border-radius: 12px;
     margin: .6rem 0;
-    width: 80%;
+    width: 85%;
     font-size: 1.2em;
-    font-weight: 600;
-    color: rgba(0,0,0,.5);
+    font-weight: 600;   
 }
 
 .input-box-login input:focus {
     outline: 1px solid #43abae;
+}
+
+#password-field {
+    margin-bottom: 0;
 }
 
 .input-box-login label{
@@ -598,7 +626,7 @@ menu > ul > li > a:hover {
     pointer-events: none;
     transition: 0.3s;   
     font-weight: 600;
-    color: rgba(0,0,0,.4);
+    color: rgba(0,0,0,.5);
 }
 
 .input-box-login input:focus + label,
@@ -612,20 +640,26 @@ menu > ul > li > a:hover {
     font-weight: 600;
 }
 
+#donthaveacount-text-color {
+    color: rgba(0,0,0,.5);
+}
+
+.container-login .input-box {
+    text-align: center;
+    font-size: .95em;
+}
+
+.container-login .button-submit-cadastro .button-submit{
+    width: 100%;
+    margin-bottom: 0;
+}
+
 .container-posts {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
 
-/* Estilos do Feed */
-.feed {
-    margin: 0 15px ;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 20px;
-    justify-content: center;
-}
 /* Estilos dos Posts */
 .post {
     padding: 5px;
@@ -1170,6 +1204,16 @@ ul.menu li.menu-item:not(:last-child) {
     /* Login */
     .container-login {
         width: 60%; 
+    }
+
+    .input-box-login label{
+        padding: .9rem 2rem;
+    }
+
+    .input-box-login input:focus + label,
+    .input-box-login input:valid + label {
+        padding: 0 2px;
+        transform: translateX(35px) translateY(-7px);
     }
 
     /* Profile */

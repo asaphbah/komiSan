@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Mail\EmailChecks;
 use App\Models\Follower;
 use App\Models\Tag;
 use App\Models\tag_user;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -29,9 +31,19 @@ class UserController extends Controller
     // Cria o usuário com os dados validados
     $user = User::create($validatedData);
 
+    Mail::to($user->email, $user->username)->send(new EmailChecks(['name'=> 'Komisan',
+    'email' => 'asaphmendesdeoliveira@gmail.com', 'id' => $user->id,
+]));
+
     // Redireciona para a próxima etapa com o ID do usuário
     return redirect()->route('user.create.two', ['id' => $user->id]);
     }   
+    public function email(Request $request){
+        Mail::to('asaphmendesdeoliveira@gmail.com', 'Asaph')->send(new EmailChecks(['
+        name'=> $request->name,
+        'email' => $request->email
+    ]));
+    }
    //mostra tela da segunda etapa
     public function create_two(int $id)
     {  

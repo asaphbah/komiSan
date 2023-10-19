@@ -30,7 +30,7 @@
                         @endif 
                     @endauth
             
-               <span class="likes-count">{{$post_relacionado->likeCount->count()}} likes</span>
+                    <span class="likes-count">likes:{{$post_relacionado->likes->count()}}</span>
                       
                 </div>
             </article>
