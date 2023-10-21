@@ -1,10 +1,10 @@
 @charset "UTF-8";
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 * {
     color: #333;;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Rubik', sans-serif;
     border: 0;
     text-decoration: none;
     list-style: none;
@@ -143,15 +143,21 @@ menu > ul > li > a {
     font-size: 1.2em;
     font-weight: bold;
     padding: 1rem 0;
-    margin: 0 2.3rem;    
+    margin: 0 1.2rem;
 }
 
-menu > ul > li > a:hover {
+menu > ul > li {
+    margin: 0 1rem;
+}
+
+menu > ul > li:hover {
     border-radius: 0.35cm;
     background-color: #fbfbfb;
     color: #43aaaafb;
 }
-
+menu > ul > li:hover a{
+    color: #43aaaafb; 
+}
 /* Portfolio */
 .portfolio-card {
     margin: 1.6rem 1.3rem;
@@ -221,7 +227,7 @@ menu > ul > li > a:hover {
 }   
 
 .h1-cadastro::after {
-    margin-top: 1rem;
+    margin: .6rem 0;
     border-bottom: 2.5px solid #aeaeae11;
     display: block;
     content: ' ';
@@ -234,7 +240,6 @@ menu > ul > li > a:hover {
 }
 
 .button-submit {
-    margin: 5px;
     border: none;
     background-color: #43abae;
     color: white;
@@ -243,6 +248,7 @@ menu > ul > li > a:hover {
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.3em;
+    width: 95%;
 }
 
 .button-submit:hover {
@@ -254,6 +260,7 @@ menu > ul > li > a:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 1rem;
+    padding-bottom: 0;
     width: fit-content;
 }
 
@@ -275,7 +282,7 @@ menu > ul > li > a:hover {
     padding: .9rem 1.1rem;
     border-radius: 12px;
     margin: .6rem 0;
-    background-color: #bbbbbb45;
+    background-color: #bbbbbb2c;
 }
 
 .input-box input:focus-visible{
@@ -289,8 +296,8 @@ menu > ul > li > a:hover {
 }
 
 .button-submit-cadastro {
-    margin-top: 2vh;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .container-img {
@@ -318,7 +325,6 @@ menu > ul > li > a:hover {
   .checkbox-item { 
     width: 100px;
     height: 120px;
-    margin: 18px 0;
   }
 
   .checkbox-item input {
@@ -337,7 +343,6 @@ menu > ul > li > a:hover {
     text-align: center;
     transition: all 100ms ease-in-out;
     border-radius: 12px;
-    padding-top: 3px;
 }
 .checkbox-contant{
     height: 100%;
@@ -346,10 +351,10 @@ menu > ul > li > a:hover {
 .checkbox-item img {
     object-fit: cover;
     border-radius: 12px 12px 0px 0px;
-    max-width: 120px;
-    max-height: 120px;
+    max-width: 180px;
+    max-height: 180px;
     overflow: hidden;
-    margin: auto;
+   
 }
 
 .button-submit2 {    
@@ -380,30 +385,13 @@ menu > ul > li > a:hover {
 }
 
 /* Cadastro 3 */
-.h2-cadastro {
-    margin-top: 15px;
-    font-size: 1.2em;
-    font-weight: 500;
-    color: #555;
-}
-
-.inputs-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
 
 .input-box input[type="file"] {
     display: none;
 }
 
-.inputs-container .input-box {
-    margin-top: 25px;
-}
-
 .input-box .image-selector {
     display: flex;
-    
     flex-direction: column;
     align-items: center;
 }
@@ -419,14 +407,7 @@ menu > ul > li > a:hover {
     max-width: 100%;
     max-height: 200px;
     cursor: pointer;
-}
-
-.input-box .image-selector p {
-    text-align: center;
-    padding-bottom: 10px;
-    margin: 6px 0;
-    color: #777777d5;
-    cursor: pointer;
+    margin-bottom: 12px;
 }
 
 .input-box label {
@@ -435,6 +416,14 @@ menu > ul > li > a:hover {
     font-weight: 600;
     color: #000000c0;
     margin-bottom: 6px;
+}
+
+.input-box-3 {
+    margin-bottom: 4rem;
+}
+
+.input-box-3 label{
+    justify-content: center;
 }
 
 #cover-image-preview {
@@ -464,6 +453,7 @@ menu > ul > li > a:hover {
     transition: height 0.3s ease-in-out;
     resize: none;
     width: 100%;
+    margin-bottom: 4rem;
 }
 
 .input-box textarea:focus {
@@ -607,7 +597,8 @@ menu > ul > li > a:hover {
     margin: .6rem 0;
     width: 85%;
     font-size: 1.2em;
-    font-weight: 600;   
+    font-weight: 600;
+    color: rgba(0,0,0,.5);
 }
 
 .input-box-login input:focus {
@@ -626,7 +617,7 @@ menu > ul > li > a:hover {
     pointer-events: none;
     transition: 0.3s;   
     font-weight: 600;
-    color: rgba(0,0,0,.5);
+    color: rgba(0,0,0,.4);
 }
 
 .input-box-login input:focus + label,
@@ -636,7 +627,7 @@ menu > ul > li > a:hover {
     background: linear-gradient(#fbfbfb, white);
     padding: 0 10px;
     text-transform: uppercase;
-    transform: translateX(10px) translateY(-7px);
+    transform: translateX(1.2rem) translateY(-7px);
     font-weight: 600;
 }
 
@@ -660,6 +651,15 @@ menu > ul > li > a:hover {
     padding: 20px;
 }
 
+
+/* Estilos do Feed */
+.feed {
+    margin: 0 15px ;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+}
 /* Estilos dos Posts */
 .post {
     padding: 5px;

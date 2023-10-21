@@ -1,7 +1,7 @@
 <div>
         <div class="container-posts">
             <ul class="menu">
-                <li class="menu-item"wire:click="process">Em Processo</li>
+                <li class="menu-item"wire:click="process">ocorrendo</li>
                 <li class="menu-item"wire:click="pending">Pendentes</li>
                 <li class="menu-item"wire:click="concluded">Concluídos</li>
             </ul>

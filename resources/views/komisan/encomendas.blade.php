@@ -288,8 +288,8 @@
         </nav>
     </header>
     <ul id="requests-show" class="menu">
-        <a href="{{ route('request.show.user') }}"><li class="menu-item">usuario</li></a>
-        <a href="{{ route('request.show.artist') }}"><li class="menu-item">artista</li></a>
+        <a href="{{ route('request.show.user') }}"><li class="menu-item">Usuário</li></a>
+        <a href="{{ route('request.show.artist') }}"><li class="menu-item">Artista</li></a>
     </ul> 
     <livewire:request-artist :view="$view" />
     <script>

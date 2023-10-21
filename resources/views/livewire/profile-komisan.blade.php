@@ -1,6 +1,6 @@
 <div>
         <ul class="menu">
-            <li class="menu-item" wire:click="myPosts">Posts</li>
+            <li class="menu-item" wire:click="myPosts">Meus posts</li>
             <li class="menu-item" wire:click="likesPosts">Curtidos</li>
             <li class="menu-item" wire:click="favoritPosts">Salvos</li>
         </ul>

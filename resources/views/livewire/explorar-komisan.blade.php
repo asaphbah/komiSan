@@ -1,7 +1,7 @@
 <div>
     @auth
         <ul class="menu">
-            <li class="menu-item" wire:click="postsForYou">For you</li>
+            <li class="menu-item" wire:click="postsForYou">Pata você</li>
             <li class="menu-item" wire:click="postsViral">Virais</li>
             <li class="menu-item"wire:click="postsFollowers">Seguindo</li>
         </ul>    

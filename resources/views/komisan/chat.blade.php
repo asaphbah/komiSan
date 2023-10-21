@@ -57,7 +57,7 @@
 
 .chat {
     margin: auto;
-    /*pc*/min-width: 800px;
+    /*pc*/width: 100%;
     /*tabletmin-width: 400px;*/
     /*celularmin-width: 0;*/
     max-width: 1200px;

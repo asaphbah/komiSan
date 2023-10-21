@@ -24,7 +24,7 @@
                 <li><a href="{{ route('user.create.one') }}">Cadastrar</a></li>
             @endguest
             @auth
-                <li><a href="{{ route('profile.komisan', ['username' => auth()->user()->username]) }}">Profile</a></li>
+                <li><a href="{{ route('profile.komisan', ['username' => auth()->user()->username]) }}">Perfil</a></li>
                 <li><a href="{{ route('user.home') }}">Artistas</a></li>
                 <li><a href="{{ route('post.create') }}">Postar</a></li>
                 <li><a href="{{ route('request.show') }}">Encomendas</a></li>

@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{asset('img/system/icon.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-
     <title>Komisan: Cadastro</title>
     
 </head>
+<style>
+    .alert-danger {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        color: #721c24;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        width: 95%;
+    }
+
+    .alert-danger ul {
+        margin-bottom: 0;
+        padding-left: 20px;
+    }
+
+    .alert-danger li {
+        list-style: disc;
+        margin-bottom: 5px;
+    }
+</style>
 <body class="body-cadastro">
     <div class="container-img">
-        <img src="{{asset('img/system/logo.png')}}" alt="">
+        <img src="{{asset('img/system/logo.png')}}" alt="" draggable="false">
     </div>
     <div class="container-cadastro">
         <form action="{{ route('user.store.one') }}" method="POST" id="form-one">
             @csrf
             <div>
-                <h1 id="h1-cadastro">Cadastro (etapa 1)</h1>
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+                <h1 class="h1-cadastro">Informe seus dados</h1>
             </div>
             <div class="input-group">
                 <div class="input-box">
@@ -34,8 +46,8 @@
                     <span class="error-message" id="name-error"></span>
                 </div>
                 <div class="input-box">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" placeholder="Digite seu username" id="input-username" required>
+                    <label for="username">Nome de usuário</label>
+                    <input type="text" name="username" placeholder="Digite seu nome de usuário" id="input-username" required>
                     <span class="error-message" id="username-error"></span>
                 </div>
                 <div class="input-box">
@@ -59,9 +71,18 @@
                     <span class="error-message" id="passwordconfirm-error"></span>
                 </div>
             </div>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <div class="button-submit-cadastro">
                 <button class="button-submit" type="submit">
-                    proxima etapa
+                    Próxima
                 </button>
             </div>
         </form>

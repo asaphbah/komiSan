@@ -38,7 +38,7 @@
                     <div class="mascot-circle">
                         <img src="{{asset('img/system/mascote.png')}}" alt="" srcset="" draggable="false">
                     </div>
-                        <img src="{{asset('img/system/mascote.png')}}" alt="" srcset="" draggable="false">
+                    <img src="{{asset('img/system/mascote.png')}}" alt="" srcset="" draggable="false"> 
                 </div>
             </div>
             

@@ -6,6 +6,7 @@
                     <div class="self-user">
                         <div class="user">Você</div>
                         <div class="content">{{$message->message}}</div>
+                        {{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y H:i') }}
                     </div>
                 </div>
             @else
@@ -13,6 +14,7 @@
                     <div class="other-user ">
                         <div class="user">{{$message->user->unsername}}</div>
                         <div class="content">{{$message->message}}</div>
+                        {{ \Carbon\Carbon::parse($message->created_at)->format('d/m/Y H:i') }}
                     </div>
                 </div>                    
             @endif
