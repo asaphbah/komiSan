@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 * {
-    color: #333;;
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
@@ -9,7 +9,8 @@
     text-decoration: none;
     list-style: none;
 }
-/* Custom scrollbar */
+
+/* Scrollbar */
 body::-webkit-scrollbar {
     width: 12px;
 }
@@ -20,12 +21,25 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
     background-color: #43abae;
-    border-radius: 10px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
     background-color: #43aaaefb;
 }
+
+/* Autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Selection */
+::selection {
+    background-color: #df9dff;
+}
+
 body {
     padding-top: 5.7rem;
     background-color: rgba(218, 211, 198, 0.255);
@@ -36,10 +50,10 @@ header {
     background-color: #43abae;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 1rem 0rem;
     position: fixed;
-    z-index: 990; /* Adicionado z-index */
     width: 100%;
+    z-index: 990;
     top: 0;
     left: 0;
 }
@@ -49,6 +63,28 @@ header > a {
     text-align: center;
     color: #222222;
     text-decoration: none;
+}
+
+.container-tittle {
+    padding: 0.5rem ;
+    text-align: center;
+    display: flex;
+}
+
+.container-tittle > a > h1, .container-tittle > h1 {
+    color: #000000c0;
+}
+
+.san {
+    color: #fbfbfbe7;
+}
+
+.selected-anchor {
+    color: #222222;
+}
+
+.non-visible {
+    visibility: hidden;
 }
 
 #btnBurger {
@@ -92,13 +128,28 @@ header > a {
     top: -7px;
 }
 
-.san {
-    color: #fbfbfbe7;
+#container-btnBurger,
+#container-btnAccount {
+    width: 6rem;
+    margin: 0 2rem;
 }
 
-/* .san::selection {
-    color: #222222;
-} */
+#container-btnBurger {
+    justify-content: left;
+}
+
+#container-btnAccount {
+    justify-content: right;
+    padding: 0rem 0.2rem;
+    height: 50px;
+}
+
+#container-btnAccount img {
+    width: 50px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    height: 100%;
+}
 
 /* Navigation bar menu */
 menu {
@@ -111,9 +162,26 @@ menu.show {
     visibility: visible;
     overflow-y: auto;
 }
+
 .menu-item{
     color: #222222;
 }
+
+.menu-item-myposts {
+    justify-content: left;
+    display: flex;
+}
+
+.menu-item-liked {
+    justify-content: center;
+    display: flex;
+}
+
+.menu-item-saved {
+    justify-content: right;
+    display: flex;
+}
+
 menu > ul {
     position: absolute;
     width: 100%;
@@ -134,6 +202,7 @@ menu > ul {
 menu.show > ul {  
     height: calc(100% - 5.2rem);
 }
+
 menu > ul > li > a {
     display: block;
     padding: 10px;
@@ -155,9 +224,11 @@ menu > ul > li:hover {
     background-color: #fbfbfb;
     color: #43aaaafb;
 }
+
 menu > ul > li:hover a{
     color: #43aaaafb; 
 }
+
 /* Portfolio */
 .portfolio-card {
     margin: 1.6rem 1.3rem;
@@ -167,14 +238,20 @@ menu > ul > li:hover a{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
     text-align: center;
-    min-height: 360px;
+    max-height: 360px;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.portfolio-card:hover {
+    border: 2px solid #43abae;
+    box-shadow: 0px 5px 0px 2px #43abae;
 }
 
 .portfolio-card > a > img {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    border: 3px solid #43abae;
 }
 
 .portfolio-card > h2 {
@@ -198,6 +275,25 @@ menu > ul > li:hover a{
     font-size: 20px;
 }
 
+.container-tags {
+    overflow: hidden;
+    height: 85px;
+    margin-bottom: 15px;
+}
+
+.container-tags > .art-style {
+    font-weight: 600;
+}
+
+.footer-card {
+    justify-content: space-between;
+}
+
+.footer-card img {
+    width: 90px;
+    height: 90px;
+}
+
 /* Cadastro */
 .body-cadastro {
     width: 100%;
@@ -216,6 +312,7 @@ menu > ul > li:hover a{
     background-color: #fbfbfb;
     display: flex;
     box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    justify-content: center;
 }
 
 .h1-cadastro {
@@ -276,23 +373,21 @@ menu > ul > li:hover a{
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #000000c0;
 }
 
 .input-box input{   
     padding: .9rem 1.1rem;
     border-radius: 12px;
     margin: .6rem 0;
-    background-color: #bbbbbb2c;
+    background-color: transparent;
+    border: 1.4px solid rgb(172, 172, 172);
 }
 
 .input-box input:focus-visible{
     outline: 2px solid #43abae;
-}
-
-.input-box label {
-    font-size: 1.3em;
-    font-weight: 600;
-    color: #000000c0;
 }
 
 .button-submit-cadastro {
@@ -315,22 +410,28 @@ menu > ul > li:hover a{
 }
 
 /* Cadastro 2 */
-  .checkbox-container {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
+    .checkbox-container {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
 
-  .checkbox-item { 
-    width: 100px;
-    height: 120px;
-  }
+    #h2-cadastro {
+        font-size: 1.3em;
+        font-weight: 600;
+        color: #000000c0;
+    }
 
-  .checkbox-item input {
-    visibility: hidden;
-  }
-  
+    .checkbox-item { 
+        width: 100px;
+        height: 8rem;
+    }
+
+    .checkbox-item input {
+        visibility: hidden;
+    }
+
 .checkbox-item label {
     width: 100%;
     display: flex;
@@ -344,7 +445,7 @@ menu > ul > li:hover a{
     transition: all 100ms ease-in-out;
     border-radius: 12px;
 }
-.checkbox-contant{
+.checkbox-content{
     height: 100%;
     overflow: hidden;
 }
@@ -352,9 +453,8 @@ menu > ul > li:hover a{
     object-fit: cover;
     border-radius: 12px 12px 0px 0px;
     max-width: 180px;
-    max-height: 180px;
+    max-height: 180px;  
     overflow: hidden;
-   
 }
 
 .button-submit2 {    
@@ -381,11 +481,10 @@ menu > ul > li:hover a{
 }
 
 .checkbox-item input:checked + label {
-    border: 4px solid #40a5a8;
+    box-shadow: 0px 5px 0px 2px #43abae;
 }
 
 /* Cadastro 3 */
-
 .input-box input[type="file"] {
     display: none;
 }
@@ -410,6 +509,10 @@ menu > ul > li:hover a{
     margin-bottom: 12px;
 }
 
+.input-box .image-selector label {
+    cursor: pointer;
+}
+
 .input-box label {
     text-align: center; 
     font-size: 1.3em;
@@ -428,9 +531,10 @@ menu > ul > li:hover a{
 
 #cover-image-preview {
     border-radius: 10px;
-    width: 500px;
-    height: 210px;
+    width: 100%;
+    height: 150px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
 
 .input-box .image-selector input[type="file"] + label {
@@ -447,6 +551,7 @@ menu > ul > li:hover a{
 
 .input-box textarea {
     border: 2px solid #ecf1f4;
+    background-color: #FFF;
     padding: 8px;
     border-radius: 4px;
     height: 48px;
@@ -454,6 +559,9 @@ menu > ul > li:hover a{
     resize: none;
     width: 100%;
     margin-bottom: 4rem;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #000000c0;
 }
 
 .input-box textarea:focus {
@@ -605,6 +713,13 @@ menu > ul > li:hover a{
     outline: 1px solid #43abae;
 }
 
+.input-box-login input:-webkit-autofill,
+.input-box-login input:-webkit-autofill:hover,
+.input-box-login input:-webkit-autofill:focus,
+.input-box-login input:-webkit-autofill:active {
+    -webkit-text-fill-color: rgba(0,0,0,.5) !important;
+}
+
 #password-field {
     margin-bottom: 0;
 }
@@ -646,11 +761,9 @@ menu > ul > li:hover a{
 }
 
 .container-posts {
-    max-width: 1200px;
-    margin: auto;
+    width: calc(100% - 40px);
     padding: 20px;
 }
-
 
 /* Estilos do Feed */
 .feed {
@@ -660,42 +773,43 @@ menu > ul > li:hover a{
     grid-gap: 20px;
     justify-content: center;
 }
+
 /* Estilos dos Posts */
 .post {
-    padding: 5px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     position: relative;
     display: flex;
     flex-direction: column;
-}
-.post h2 {
-    margin: 0;
-    padding: 10px;
-    font-size: 18px;
-    color: #333;
+    padding-bottom: 15px;
 }
 
 /* Estilos da Imagem do Post */
 .post .img-post {
+    padding-top: 6px;
+    padding-bottom: 10px;
     max-width: 300px;
-    max-height: 400px;
-    height: auto;
     display: block;
     object-fit: cover;
     margin: auto;
 }
+
 .post img {
     max-width: 300px;
     max-height: 400px;
 }
+
 /* Estilos do Cabeçalho do Post */
 .post-header {
     color: #222222;
     display: flex;
     align-items: center;
     padding: 10px;
+}
+
+.post-footer {
+    padding: 0 22px;
 }
 
 .user-photo {
@@ -736,15 +850,18 @@ menu > ul > li:hover a{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: max-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
 }
 
 .post-principal img {
-    height: 100%;
-    height: auto;
+    width: 100%;
     margin: auto;
     object-fit: cover;
-    max-width: 1000px;
-    max-height: 1000px;
+    max-width: 500px;
+    max-height: 500px;
 }
 
 .post-principal .post-content {
@@ -775,6 +892,11 @@ menu > ul > li:hover a{
     color: #333;
 }
 
+.post-comment {
+    width: 300px;
+    overflow-wrap: break-word;
+}
+
 .icon-button {
     margin-left: auto;
     background: none;
@@ -791,21 +913,24 @@ menu > ul > li:hover a{
     font-size: 24px;
     padding: 0;
     margin: 0;
-    transition: color 0.3s ease; /* Efeito de transição de cor */
+    transition: color 0.3s ease;
+    padding-bottom: 8px;
 }
 
-.unliked:hover {
-    color: #fc2f2f; /* Cor do ícone de coração cheio quando o mouse passa por cima */
-}
-.liked:hover {
-    color: #757575; /* Cor do ícone de coração cheio quando o mouse passa por cima */
-}
 .liked {
-    color: #ff4b4b; /* Cor do ícone de coração cheio */
+    color: #ff4b4b;
 }
 
 .unliked {
-    color: #333; /* Cor padrão para ícone não curtido */
+    color: #333;
+}
+
+.unliked:hover {
+    color: #fc2f2f;
+}
+
+.liked:hover {
+    color: #757575;
 }
 
 /* Estilos do Botão de Seguir (Follow) */
@@ -817,16 +942,16 @@ menu > ul > li:hover a{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Efeito de transição suave */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .follow-button:hover {
-    background-color: #6ad4d8; /* Cor do botão ao passar o mouse */
+    background-color: #6ad4d8;
 }
 
 .followed {
     border: 1px solid #6ad4d8;
-    background-color: #fdfdfd; /* Cor do botão de seguir quando já seguido */
+    background-color: #fdfdfd;
     color: #1e7b7f;
 }
 
@@ -845,56 +970,84 @@ menu > ul > li:hover a{
     background-color: #dbdbdb;
     height: 30px;
 }
-/*----------------------------------------------*/
+
+/* Profile */
+.container-profile {
+    width: calc(100% - 40px);
+    padding: 20px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.container-profile-info {
+    position: fixed;
+    width: 40%;
+}
+
+.container-profile-posts {
+    margin-left: 45%;
+    width: 56%;
+}
+
 .sec-profile {
-    max-width: 1200px;
-    /* Defina a largura máxima desejada */
+    max-width: 100%;
     text-align: center;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .profile-cover {
     width: 100%;
-    height: 400px;
+    height: 150px;
     object-fit: cover;
     margin-bottom: 10px;
-    border-radius: 8px; /* Adicione borda arredondada à foto de capa */
+    border-radius: 8px 8px 0 0;
 }
 
 .profile-photo {
     border-radius: 10px;
     width: 100%;
     height: 100%;
-    display: block;
-    margin-bottom: 10px;
-    border: 2px solid #333;
-  
+    flex-wrap: wrap;
 }
+
+.container-profile-foto {
+    position: relative;
+    height: 30px;
+}
+
 .profile-img{
-    max-width: 100%;
-    max-height: 150px;
-    background-size:  cover;
+    max-width: 90px;
+    max-height: 90px;
+    background-size: cover;
     border-radius: 50%;
-  
+    position: absolute;
+    top: -60px;
+    left: 10px;
 }
 
 .profile-name {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .profile-stats {
-    margin-bottom: 20px;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .profile-stat {
+    display: flex;
     margin-bottom: 10px;
 }
+
+.dropdown-profile {
+    margin-left: auto;
+} 
 
 .art-styles-container {
     display: flex;
@@ -935,127 +1088,136 @@ menu > ul > li:hover a{
 .profile-cta button:hover {
     background-color: #6ad4d8;
 }
+
 .config-button-container{
     background-color: #555 !important;
     margin-left: auto;
     width: 40px;
     height: 40px;
 }
+
 .sec-review {
-text-align: center;
-border-radius: 20px;
-background-color: #fff;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-padding: 20px;
-margin-bottom: 20px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .review {
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
 }
 
 .stars {
-font-size: 24px;
-color: #ffdd00;
+    font-size: 24px;
+    color: #d7db63;
+    margin: .6rem 0;
 }
 
 .rating {
-margin: 5px auto;
-font-size: 16px;
-font-weight: bold;
-color: #333;
+    margin: 5px auto;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
 }
 
 .art-styles-container {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
 }
 
 .art-style {
-background-color: #43abae;
-color: #fff;
-padding: 6px 10px;
-border-radius: 20px;
-margin-top: 10px;
-display: inline-block;
-font-weight: 500;
-margin-right: 10px; /* Adicione margem à direita para separar as tags */
+    background-color: #43abae;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: 500;
+    margin-right: 10px; /* Adicione margem à direita para separar as tags */
 }
 
 .submit-order {
-margin: 10px auto;
-background-color: #1e7b7f;
-color: #fff;
-padding: 12px 30px;
-border: none;
-border-radius: 30px;
-cursor: pointer;
-transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-font-size: 18px;
-font-weight: bold;
-text-transform: uppercase;
+    margin: 10px auto;
+    background-color: #D68BC9;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 .submit-order a{
-    color: #ddd;
+    color: #fff;
 }
 .submit-order:hover {
-background-color: #6ad4d8;
-transform: scale(1.05);
+    background-color: #c457b1;
+    transform: scale(1.05);
 }
 
 .submit-order:focus {
-outline: none;
+    outline: none;
 }
 
 .submit-order:active {
-transform: scale(0.95);
+    transform: scale(0.95);
 }
+
 /* Adicione uma animação quando o botão for pressionado */
 .submit-order:active {
-transform: scale(0.95);
+    transform: scale(0.95);
 }
+
 .follow-button {
-padding: 10px 20px;
-border: none;
-border-radius: 50px;
-cursor: pointer;
-transition: background-color 0.3s ease, color 0.3s ease;
-font-size: 16px;
-font-weight: bold;
-background-color: #1e7b7f;
-color: #fff;
-margin: auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #1e7b7f;
+    color: #fff;
+    margin: auto;
 }
 
 .follow-button:hover {
-background-color: #034a96;
+    background-color: #034a96;
 }
 
 .follow-button:focus {
-outline: none;
+    outline: none;
 }
+
 .bio-section {
-text-align: left;
-padding: 20px;
-background-color: #fff;
-border-radius: 8px;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-margin-bottom: 20px;
+    text-align: left;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
+
 .bio-section h2 {
-font-size: 20px;
-margin-bottom: 10px;
-color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
 }
+
 .bio-content {
-font-size: 16px;
-color: #555;
+    font-size: 16px;
+    color: #555;
 }
+
 /* Estilos para o dropdown */
 .dropdown {
     margin-right: auto;
@@ -1071,13 +1233,16 @@ color: #555;
     min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 10px;
 }
 
 .dropdown-content a {
-    color: black;
+    color: #000000c0;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    font-weight: 600;
+    font-size: .65em;
 }
 
 .dropdown-content a:hover {
@@ -1087,6 +1252,7 @@ color: #555;
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 /*----------------------------------------------*/
 ul.menu {
     background-color: #fff;
@@ -1105,6 +1271,9 @@ ul.menu li.menu-item {
     border-radius: 8px;
     font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease;
+    width: 7rem;
+    justify-content: center;
+    display: flex;
 }
 
 ul.menu li.menu-item:hover {
@@ -1126,6 +1295,86 @@ ul.menu li.menu-item:not(:last-child) {
 
 .logo{
     display: flex;
+}
+
+/* Postar */
+.container-postar {
+    display: flex;
+    justify-content: center;
+    padding: 0 2.5rem;
+}
+
+.form-column, .post-column {
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #fbfbfb;
+    display: flex;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    margin: 0 4rem;
+    margin-top: 5vh;
+    display: flex;
+    width: 40%;
+    justify-content: center;
+}
+
+.postar-input-group {
+    min-width: fit-content;
+    justify-content: center;
+}
+
+#previewImage {
+    max-width: 300px;
+    color: #000000c0;
+    font-size: .9em;
+    font-weight: 600;
+}
+
+#postComment {
+    border-radius: 12px;
+    margin: .6rem 0;
+    border: 1.4px solid rgb(172, 172, 172);
+    font-size: .85em;
+    padding-left: 1.1rem;
+    font-weight: 100;
+    width: calc(100% - (8px + 1.1rem));
+}
+
+#postComment:focus {
+    border: 1px solid #40a5a8;
+}
+
+.input-postar, .input-postar-2 {
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: .6rem;
+}
+
+.input-postar-2 {
+    margin-bottom: calc(.6rem + .6rem + 12px);
+}
+
+.input-postar label {
+    pointer-events: none;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.input-postar-2 label {
+    cursor: pointer;
+    padding: .9rem 1.1rem;
+    border-radius: 12px;
+    margin: .6rem 0;
+    background-color: rgba(172, 172, 172, 0.251);
+    border: 1.4px solid rgb(172, 172, 172);
+}
+
+.input-postar input[type="file"] {
+    visibility: hidden;
+    width: 100%;
 }
 
 @media screen and (min-width: 768px){ /* tablets */
@@ -1228,22 +1477,25 @@ ul.menu li.menu-item:not(:last-child) {
     .sec-profile {
         padding: 10px;
     }
+    
+    .profile-name {    
+        margin-left: 18px;
+    }
+    
     .profile-photo{
         display: flex;
-        padding: 10px 0;
+        padding-top: 10px;
         border-radius: 10px;
     }
+
     .profile-stats {
-        margin-left: 40px;
+        margin-top: 5px;
         display: flex;
         align-items: start;
-        flex-direction: column; /* Altera a direção para horizontal */
-       
     }
 
     .profile-stat {
         text-align: start;
-       
     }
 
     .sec-review {
@@ -1270,7 +1522,7 @@ ul.menu li.menu-item:not(:last-child) {
     .portfolio-card {
         width: 280px;
         margin: 1rem 0rem;
-        min-height: 360px;
+        min-height: 380px;
     }
 
     .portfolio-card > img {
@@ -1313,13 +1565,9 @@ ul.menu li.menu-item:not(:last-child) {
     }
 
     .checkbox-item { 
-      width: 130px;
-      height: 150px;
-      margin: 18px 0;
-    }
-
-    .checkbox-item label {
-        padding-top: 5px;
+        width: 8rem;
+        height: 8rem;
+        margin: 18px 0;
     }
 
     .button-submit {    
@@ -1334,11 +1582,13 @@ ul.menu li.menu-item:not(:last-child) {
     .container-login {
         width: 30%; 
     }
-}
 
-@media (min-width: 1080px) {
     .feed {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .feed-post {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .post h2 {

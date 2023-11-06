@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Tag extends Model
 {
@@ -9,7 +10,7 @@ class Tag extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'tag_user', 'tag_id', 'user_id');
+        return $this->belongsToMany(User::class, 'tag_users', 'tag_id', 'user_id');
     }
     public function posts()
     {
@@ -29,4 +30,15 @@ class Tag extends Model
     $post = $this->posts()->orderBy('created_at')->first(); 
     return $post ? $post->img_post : null; 
 }
+public function isUserRelatedToTag()
+{
+    $user = auth()->user(); // Obtém o usuário autenticado
+
+    if ($user) {
+        return $this->users()->where('user_id', $user->id)->first();
+    }
+
+    return false;
+}
+
 }

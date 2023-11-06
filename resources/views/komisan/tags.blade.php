@@ -60,13 +60,20 @@
         </nav>
     </header>
     <div class="tag-container">
-        <h2>Tag em destaque: #{{$tag->tag}}</h2>
+        <h2>Tag em destaque: {{$tag->tag}}</h2>
         <p>Número de posts associados a esta tag: {{$tag->posts->count()}}</p>
         <div class="icon-button">
             <div class="dropdown">
                 <button class="icon-button"><i class="fas fa-ellipsis-h"></i></button>
                 <div class="dropdown-content">
                     <a href="{{ route('report.tag.create', ['tag_id' => $tag->id]) }}">Reportar tag</a>
+                    @auth
+                        @if ($tag->isUserRelatedToTag())
+                            <a href="{{ route('user.tag.destroy', ['id' => $tag->id]) }}">Remover dos seus gostos</a>
+                        @else
+                            <a href="{{ route('user.tag.store', ['id' => $tag->id]) }}">Adicionar aos seus gostos</a>
+                        @endif   
+                    @endauth             
                 </div>
             </div>
         </div>

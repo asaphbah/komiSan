@@ -18,7 +18,7 @@
                 <div class="input-box input-box-3">
                     <label for="input-user-image">Imagem de Usuário</label>
                     <div class="image-selector">
-                        <img id="user-image-preview" src="https://via.placeholder.com/200" alt="Imagem de Usuário">
+                        <img id="user-image-preview" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAACfCAMAAABX0UX9AAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABODcYhAAEl463hAAAAAElFTkSuQmCC" alt="Imagem de Usuário">
                         <input name="img_user" type="file" id="input-user-image" accept="image/*" onchange="updateImagePreview('user-image-preview', 'input-user-image')">
                         <label for="input-user-image">Selecionar Imagem</label>
                     </div>
@@ -28,7 +28,7 @@
                 <div class="input-box input-box-3">
                     <label for="input-cover-image">Imagem de Capa</label>
                     <div class="image-selector">
-                        <img id="cover-image-preview" src="https://via.placeholder.com/200" alt="Imagem de Capa">
+                        <img id="cover-image-preview" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAACfCAMAAABX0UX9AAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABODcYhAAEl463hAAAAAElFTkSuQmCC" alt="Imagem de Capa">
                         <input name="img_cover" type="file" id="input-cover-image" accept="image/*" onchange="updateImagePreview('cover-image-preview', 'input-cover-image')" required>
                         <label for="input-cover-image">Selecionar Imagem</label>
                     </div>

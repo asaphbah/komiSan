@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::prefix('Komisan/')->group(function () {
+//Route::prefix('Komisan/')->group(function () {
    
     Route::get('/', [Controller::class, 'login']);
 
@@ -71,6 +71,8 @@ Route::prefix('Komisan/')->group(function () {
     Route::post('/cadastrar/tags', [UserController::class, 'store_two'])->name('user.store.two');
     Route::get('/cadastrar/three/{id}', [UserController::class, 'create_three'])->name('user.create.three');
     Route::post('/cadastrar/user/profile', [UserController::class, 'store_three'])->name('user.store.three');
+    Route::get('/cadastrar/four/{id}', [UserController::class, 'create_four'])->name('user.create.four');
+    Route::post('/cadastrar/user/artist', [UserController::class, 'store_four'])->name('user.store.four');
 
 
 
@@ -84,4 +86,6 @@ Route::prefix('Komisan/')->group(function () {
 
     Route::get('/post/{id}', [PostController::class, 'post_unico'])->name('post.unico');
     
-});
+    Route::get('/tag/user/store/{id}',[TagController::class,'store'])->name('user.tag.store');
+    Route::get('/tag/user/destroy/{id}',[TagController::class,'destroy'])->name('user.tag.destroy');
+//});

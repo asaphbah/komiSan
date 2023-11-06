@@ -16,10 +16,10 @@
             <div class="input-group">
                 
                 <!-- Campo de imagem de referência -->
-                <div class="input-box container-img">
+                <div class="input-box ">
                     <label for="input-reference-image">Imagem de Referência</label>
                     <div class="image-selector">
-                        <img id="reference-image-preview" src="https://via.placeholder.com/200" alt="Imagem de Referência">
+                        <img id="reference-image-preview" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAACfCAMAAABX0UX9AAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABODcYhAAEl463hAAAAAElFTkSuQmCC" alt="Imagem de Referência">
                         <p>Clique para selecionar uma imagem</p>
                         <input name="reference_img" type="file" id="input-reference-image" accept="image/*" onchange="updateImagePreview('reference-image-preview', 'input-reference-image')">
                         <label for="input-reference-image">Selecionar Imagem</label>
@@ -49,7 +49,7 @@
                     <input type="date" name="deadline" id="input-deadline" required>
                     <span class="error-message" id="request-deadline"></span>
                 </div>
-           
+            
             <div class="button-submit-pedido">
                 <button class="button-submit" type="submit">
                     Enviar Pedido

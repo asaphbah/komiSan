@@ -9,7 +9,7 @@
 <body class="body-cadastro">
     <div class="container-cadastro">
         <div  action="{{route('store.request')}}" method="POST" onsubmit="return validatediv(event)">
-           
+            
             <h1>Pedido Enviado</h1>
             <div class="input-group">
                 <!-- Campo de imagem de referência -->

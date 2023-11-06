@@ -12,5 +12,5 @@
         @endif 
     @endauth
 
-    <span class="likes-count">{{$post->likes->count()}} likes</span>
+   <span class="likes-count">{{$post->likeCount->count()}} likes</span>
 </div>

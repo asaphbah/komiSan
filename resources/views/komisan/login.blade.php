@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{asset('img/system/icon.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <title>Komisan: Login</title>
@@ -19,12 +20,11 @@
 
     .alert-danger ul {
         margin-bottom: 0;
-        padding-left: 20px;
     }
 
     .alert-danger li {
-        list-style: disc;
-        margin-bottom: 5px;
+        text-decoration: none;
+        text-align: center;
     }
 </style>
 
@@ -38,21 +38,11 @@
                     <div class="mascot-circle">
                         <img src="{{asset('img/system/mascote.png')}}" alt="" srcset="" draggable="false">
                     </div>
-                    <img src="{{asset('img/system/mascote.png')}}" alt="" srcset="" draggable="false"> 
+                        <img src="{{asset('img/system/mascote.png')}}" alt="" srcset="" draggable="false">
                 </div>
             </div>
             
             <div class="input-group-login">
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-
                 <h1 class="h1-login">Login</h1>
                 <div class="input-box-login">
                     <input type="text" name="username" id="input-username" required>
@@ -69,6 +59,15 @@
                 </div>
                 <span toggle="#password-field" class="toggle-password">Mostrar senha</span>
             </div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
             <div class="button-submit-cadastro">
                 <button class="button-submit" type="submit">
                     Entrar
@@ -76,7 +75,7 @@
             </div>
             <div class="input-box">
                 <a class="anchor-donthavean-acount" href="{{route('user.create.one')}}"><span id="donthaveacount-text-color">Não tem uma conta?</span> Cadastre-se aqui</a>
-           </div>
+            </div>
         </form>
     </div>
     <script>

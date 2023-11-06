@@ -120,6 +120,17 @@ imageSelectors.forEach(selector => {
 });
 
 if (formPost) {
+    document.addEventListener('DOMContentLoaded', function() {
+        const postTagsInput = document.getElementById('postTags');
+        postTagsInput.addEventListener('input', function() {
+            const tags = postTagsInput.value.split('#');
+            const sanitizedTags = tags.map(tag => {
+                return tag.slice(0, 30); // Limita cada tag a 30 caracteres
+            });
+            postTagsInput.value = sanitizedTags.join('#');
+        });
+    });
+    
         formPost.addEventListener('submit', function(event) {
             const inputs = formPost.querySelectorAll('input, textarea');
 

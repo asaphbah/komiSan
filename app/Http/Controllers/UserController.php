@@ -31,9 +31,7 @@ class UserController extends Controller
     // Cria o usuário com os dados validados
     $user = User::create($validatedData);
 
-    Mail::to($user->email, $user->username)->send(new EmailChecks(['name'=> 'Komisan',
-    'email' => 'asaphmendesdeoliveira@gmail.com', 'id' => $user->id,
-]));
+  //  Mail::to($user->email, $user->username)->send(new EmailChecks(['name'=> 'Komisan','email' => 'asaphmendesdeoliveira@gmail.com', 'id' => $user->id,]));
 
     // Redireciona para a próxima etapa com o ID do usuário
     return redirect()->route('user.create.two', ['id' => $user->id]);
@@ -105,7 +103,31 @@ class UserController extends Controller
             $data['img_cover'] = $request->file('img_cover')->storeAs('users/cover', $fileName);
             $user->update(['img_cover' => $data['img_cover']]);
         }
+        if ($user->artist) {
+            return redirect()->route('user.create.four', ['id' => $user->id]);
+        }
         return view('komisan.login');
+    }
+    public function create_four($id){
+        $user = User::find($id);
+        $tags = $user->tags;
+        return view('komisan.forms.cadastroUser-four', compact('tags','user'));
+    }
+    public function store_four(Request $request)
+    {
+        $user = User::find($request->input('user_id'));
+        $validator = Validator::make($request->all(), [
+            'tags' => 'array',
+            'tags.*' => 'exists:tags,id',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->route('user.create.four', ['id' => $user->id])->withErrors($validator)->withInput();
+        } else {
+            $tagIds = $request->input('tags', []);
+            tag_user::where('user_id', $user->id)->whereIn('tag_id', $tagIds)->update(['status' => 1]);
+            return view('komisan.login');
+        }
     }
     public function follower(int $user_id,int $follower_id){
         if ($user_id === $follower_id) {

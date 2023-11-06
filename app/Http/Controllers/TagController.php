@@ -13,4 +13,18 @@ class TagController extends Controller
 
         return view('komisan.tags', compact('tag'));
     }
+    public function store($id){
+        $tag = Tag::find($id);
+        $user = auth()->user();
+        $user->tags()->attach($tag);
+        return redirect()->back();
+    }
+    
+    public function destroy($id){
+        $tag = Tag::find($id);
+        $user = auth()->user();
+        $user->tags()->detach($tag);
+        return redirect()->back();
+    }
+    
 }

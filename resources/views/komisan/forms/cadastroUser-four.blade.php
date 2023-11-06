@@ -10,9 +10,9 @@
 <body class="body-cadastro">
     <div class="container-cadastro">
         
-        <form action="{{ route('user.store.two')}}" method="POST">
+        <form action="{{ route('user.store.four')}}" method="POST">
             <h1 class="h1-cadastro">Selecione seus interesses</h1>
-            <h2 id="h2-cadastro">Estilos e tendências de arte</h2>
+            <h2 id="h2-cadastro">Estilos os quais trabalha</h2>
             @csrf
 
             <input type="hidden" name="user_id" value="{{$user->id}}">

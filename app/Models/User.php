@@ -85,7 +85,7 @@ class User extends Authenticatable
     }
     public function artistTags()
     {
-        return $this->belongsToMany(Tag::class, 'tag_users', 'user_id', 'tag_id')->where('status', 'P');
+        return $this->belongsToMany(Tag::class, 'tag_users', 'user_id', 'tag_id')->where('status', 1);
     }
   
     public function averageRating()
@@ -115,5 +115,8 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->is_admin === 1; 
+    }
+    public function portfolio(){
+        return $this->posts()->take(3)->get();
     }
 }
